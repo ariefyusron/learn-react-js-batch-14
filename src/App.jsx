@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import Container from "./Container";
 
@@ -18,9 +18,21 @@ const App = () => {
   ]
 
   const [count, setCount] = useState(0)
+  const [text, setText] = useState('')
+  const formDOM = useRef(null)
+
+  useEffect(() => {
+    console.log('useEffect')
+  }, [count])
 
   const handleClick = () => {
     setCount(count + 1)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("submit")
+    console.log(e.target.username.value)
   }
 
   return (
@@ -29,8 +41,28 @@ const App = () => {
         <Container key={index} title={item.title} desc={item.desc} />
       ))}
 
+      {console.log('render')}
+
       <h1>Count: {count}</h1>
       <button onClick={handleClick}>Klik</button>
+
+      <form ref={formDOM} style={{ marginTop: 24 }} onSubmit={handleSubmit}>
+        <input type="text" name='username' />
+        <button type="submit">Submit</button>
+      </form>
+      <button onClick={() => formDOM.current.reset()}>reset form</button>
+
+      <br />
+      <br />
+      <br />
+      <input type='text' placeholder='text' value={text} onChange={(e) => {
+        setText(e.target.value)
+      }} />
+      <button onClick={() => {
+        setText('')
+      }}>reset</button>
+
+      <p>{text}</p>
     </>
   )
 }
