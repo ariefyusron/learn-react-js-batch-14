@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 import Container from "./Container";
+import { useForm } from './useForm.js'
 
 const App = () => {
   const list = [
@@ -18,12 +19,9 @@ const App = () => {
   ]
 
   const [count, setCount] = useState(0)
-  const [text, setText] = useState('')
   const formDOM = useRef(null)
 
-  useEffect(() => {
-    console.log('useEffect')
-  }, [count])
+  const { text, setText, reset } = useForm()
 
   const handleClick = () => {
     setCount(count + 1)
@@ -58,9 +56,7 @@ const App = () => {
       <input type='text' placeholder='text' value={text} onChange={(e) => {
         setText(e.target.value)
       }} />
-      <button onClick={() => {
-        setText('')
-      }}>reset</button>
+      <button onClick={reset}>reset</button>
 
       <p>{text}</p>
     </>
