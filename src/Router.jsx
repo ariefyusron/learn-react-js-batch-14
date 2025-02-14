@@ -16,7 +16,7 @@ const Router = () => {
 
         <Route path='setting' element={<Header />}>
           <Route index element={<HomePage />} />
-          <Route path='password' element={<ProfilePage />} />
+          <Route path='password/:name' element={<ProfilePage />} />
         </Route>
 
       </Routes>

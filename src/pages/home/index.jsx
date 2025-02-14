@@ -14,7 +14,7 @@ const Home = () => {
       <Link to="/password">Go to password Link</Link>
 
       <button onClick={() => {
-        navigate('password')
+        navigate('password/yusron')
       }}>
         link to password
       </button>
