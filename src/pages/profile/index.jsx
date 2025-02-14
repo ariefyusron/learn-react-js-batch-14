@@ -1,8 +1,15 @@
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams, useLocation } from 'react-router'
 
 const Profile = () => {
   const navigate = useNavigate()
   const params = useParams()
+  const location = useLocation()
+
+  console.log(location)
+
+  const searchParams = new URLSearchParams(location.search)
+
+  console.log(searchParams.get('name'))
 
   return (
     <>
