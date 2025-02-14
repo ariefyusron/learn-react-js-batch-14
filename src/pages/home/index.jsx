@@ -1,14 +1,10 @@
 import { NavLink, Link, useNavigate } from "react-router";
 
-import Header from '../../components/header'
-
-
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <Header />
       <div>
         <h1>Home</h1>
       </div>
