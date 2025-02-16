@@ -1,24 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-import HomePage from './pages/home'
-import ProfilePage from './pages/profile'
+import StockPage from './pages/stock';
+import CashierPage from './pages/cashier'
 
-import Header from './components/header'
+import ContainerPage from './components/container-page';
 
 const Router = () => {
 
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* <Route path="/" element={<HomePage />} />
-        <Route path='profile' element={<ProfilePage />} /> */}
-
-        <Route path='setting' element={<Header />}>
-          <Route index element={<HomePage />} />
-          <Route path='password/:name' element={<ProfilePage />} />
+        <Route element={<ContainerPage />}>
+          <Route path="/stock" element={<StockPage />} />
+          <Route path="/cashier" element={<CashierPage />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   )
