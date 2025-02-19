@@ -1,5 +1,6 @@
+import { Suspense } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router'
-import { Row, Col, Menu } from 'antd'
+import { Row, Col, Menu, Spin } from 'antd'
 
 const ContainerPage = () => {
   const navigate = useNavigate()
@@ -46,7 +47,9 @@ const ContainerPage = () => {
         <h1>{item.label}</h1>
         <Row style={{ marginTop: '16px' }}>
           <Col span={24}>
-            <Outlet />
+            <Suspense fallback={<Spin />}>
+              <Outlet />
+            </Suspense>
           </Col>
         </Row>
       </Col>

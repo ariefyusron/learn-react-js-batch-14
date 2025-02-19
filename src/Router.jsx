@@ -1,7 +1,8 @@
+import { lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-import StockPage from './pages/stock';
-import CashierPage from './pages/cashier'
+const StockPage = lazy(() => import('./pages/stock'))
+const CashierPage = lazy(() => import('./pages/cashier'))
 
 import ContainerPage from './components/container-page';
 
