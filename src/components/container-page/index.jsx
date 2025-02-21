@@ -20,6 +20,10 @@ const ContainerPage = () => {
           key: '/cashier',
           label: 'Kasir'
         },
+        {
+          key: '/news',
+          label: 'Berita'
+        }
       ]
     }
   ]
