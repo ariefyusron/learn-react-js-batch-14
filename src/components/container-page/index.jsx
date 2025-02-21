@@ -1,10 +1,14 @@
 import { Suspense } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router'
-import { Row, Col, Menu, Spin } from 'antd'
+import { Row, Col, Menu, Spin, Button } from 'antd'
+
+import storeAuth from '../../stores/storeAuth';
 
 const ContainerPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
+
+  const setToken = storeAuth((state) => state.setToken)
 
   const menuItems = [
     {
@@ -46,6 +50,7 @@ const ContainerPage = () => {
           }}
           defaultSelectedKeys={[location.pathname]}
         />
+        <Button onClick={() => setToken('')}>Logout</Button>
       </Col>
       <Col style={{ padding: '24px' }} span={20}>
         <h1>{item.label}</h1>

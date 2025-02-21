@@ -1,6 +1,28 @@
+import { useState } from 'react';
 import { Row, Col, Form, Input, Button } from 'antd'
+import axios from 'axios'
+
+import storeAuth from '../../stores/storeAuth'
+
+const host = 'https://backend-portal-depok-production.up.railway.app'
 
 const Login = () => {
+  const setToken = storeAuth((state) => state.setToken)
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    try {
+      setIsLoading(true)
+
+      const response = await axios.post(`${host}/api/auth/login`, e)
+      setToken(response.data.token)
+    } catch (error) {
+      alert(error.response.data.error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <Row justify="center" style={{ paddingTop: 100 }}>
@@ -17,14 +39,15 @@ const Login = () => {
             maxWidth: 600,
           }}
           autoComplete="off"
+          onFinish={handleSubmit}
         >
           <Form.Item
-            label="Username"
-            name="username"
+            label="Email"
+            name="email"
             rules={[
               {
                 required: true,
-                message: 'Please input your username!',
+                message: 'Please input your email!',
               },
             ]}
           >
@@ -45,7 +68,7 @@ const Login = () => {
           </Form.Item>
 
           <Form.Item label={null}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" loading={isLoading} htmlType="submit">
               Submit
             </Button>
           </Form.Item>
