@@ -27,6 +27,10 @@ const ContainerPage = () => {
         {
           key: '/news',
           label: 'Berita'
+        },
+        {
+          key: '/learn-ts',
+          label: 'Learn TS'
         }
       ]
     }

@@ -8,6 +8,7 @@ const LoginPage = lazy(() => import('./pages/login'))
 const StockPage = lazy(() => import('./pages/stock'))
 const CashierPage = lazy(() => import('./pages/cashier'))
 const NewsPage = lazy(() => import('./pages/news'))
+const LearnTSPage = lazy(() => import('./pages/learn-ts'))
 
 import storeAuth from './stores/storeAuth';
 import ContainerPage from './components/container-page';
@@ -29,6 +30,8 @@ const Router = () => {
           <Route auth path="/stock" element={<StockPage />} />
           <Route auth path="/cashier" element={<CashierPage />} />
           <Route auth path="/news" element={<NewsPage />} />
+          <Route auth path="/learn-ts" element={<LearnTSPage />} />
+
         </Route>
 
         <Route auth={false} path='/login' element={(
